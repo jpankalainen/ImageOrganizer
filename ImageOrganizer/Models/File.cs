@@ -2,7 +2,7 @@
 
 namespace ImageOrganizer.Models
 {
-    class File
+    class File : IFile
     {
         private FileInfo _fileInfo;
 

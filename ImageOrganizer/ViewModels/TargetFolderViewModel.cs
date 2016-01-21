@@ -1,11 +1,11 @@
-﻿using ImageOrganizer.Models;
+﻿using ImageOrganizer.Models.Interfaces;
 using Prism.Mvvm;
 
 namespace ImageOrganizer.ViewModels
 {
     class TargetFolderViewModel : BindableBase
     {
-        public TargetFolderViewModel(Directory directoryInfo)
+        public TargetFolderViewModel(IDirectory directoryInfo)
         {
 
         }

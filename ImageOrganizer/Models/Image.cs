@@ -1,14 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace ImageOrganizer.Models
 {
-    class Image
+    class Image : IImage
     {
         private static IList<string> ImageExtensions = new List<string> { ".png", ".jpg", ".jpeg", ".png", ".webp" };
 
         private BitmapImage _image;
+
+        public ImageSource ImageSource => _image;
 
         Image(File sourceFile)
         {

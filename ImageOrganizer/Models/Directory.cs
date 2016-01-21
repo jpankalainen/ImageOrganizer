@@ -1,8 +1,9 @@
-﻿using System.IO;
+﻿using ImageOrganizer.Models.Interfaces;
+using System.IO;
 
 namespace ImageOrganizer.Models
 {
-    class Directory
+    class Directory : IDirectory
     {
         private DirectoryInfo _directoryInfo;
 

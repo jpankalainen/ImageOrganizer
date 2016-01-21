@@ -5,7 +5,13 @@ namespace ImageOrganizer.ViewModels
 {
     class MainWindowViewModel : BindableBase
     {
-        ObservableCollection<DirectoryViewModel> SourceDirectories { get; }
-        ObservableCollection<DirectoryViewModel> TargetDirectories { get; }
+        public ObservableCollection<ImageViewModel> SourceFiles { get; }
+        public ObservableCollection<TargetFolderViewModel> TargetDirectories { get; }
+
+        public MainWindowViewModel()
+        {
+            SourceFiles = new ObservableCollection<ImageViewModel>();
+            TargetDirectories = new ObservableCollection<TargetFolderViewModel>();
+        }
     }
 }

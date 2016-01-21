@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ImageOrganizer"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:behaviors="clr-namespace:ImageOrganizer.Behaviors"
         mc:Ignorable="d"
         Title="Image organizer" Height="350" Width="525">
     <Grid>
@@ -16,37 +18,49 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Column="0" Grid.Row="0">
+        <Grid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" AllowDrop="True">
+            <i:Interaction.Behaviors>
+                <behaviors:AddDroppedImagesToListBehavior TargetList="{Binding SourceFiles}" />
+            </i:Interaction.Behaviors>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="Source" />
-            <DataGrid Grid.Row="1">
-                
+            <DataGrid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding SourceFiles}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Rectangle Width="60" Height="60" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Width="*" />
+                </DataGrid.Columns>
             </DataGrid>
         </Grid>
-
-        <Grid Grid.Column="1" Grid.Row="0">
+        
+        <Grid Grid.Column="0" Grid.Row="1" AllowDrop="True">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="Target" />
-            <DataGrid Grid.Row="1">
-
+            <DataGrid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding SourceFiles}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="Auto" />
+                    <DataGridTextColumn Width="*" />
+                </DataGrid.Columns>
             </DataGrid>
         </Grid>
 
-        <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
+        <Grid Grid.Column="1" Grid.Row="1" AllowDrop="True">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="Result" />
-            <DataGrid Grid.Row="1">
-
-            </DataGrid>
+            <TextBlock Grid.Row="0" Text="Actions" />
         </Grid>
     </Grid>
 </Window>

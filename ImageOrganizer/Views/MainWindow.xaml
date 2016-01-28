@@ -20,37 +20,41 @@
 
         <Grid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" AllowDrop="True">
             <i:Interaction.Behaviors>
-                <behaviors:AddDroppedImagesToListBehavior TargetList="{Binding SourceFiles}" />
+                <behaviors:AddDroppedFileSystemItemsToListBehavior ActiveItemType="Images" TargetList="{Binding SourceFiles}" />
             </i:Interaction.Behaviors>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="Source" />
-            <DataGrid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding SourceFiles}" AutoGenerateColumns="False">
+            <DataGrid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding SourceFiles}" AutoGenerateColumns="False" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Rectangle Width="60" Height="60" />
+                                <Image Source="{Binding Image}" Width="60" Height="60" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn Width="*" />
+                    <DataGridTextColumn Width="*" Binding="{Binding Name}" />
+                    <DataGridTextColumn Width="*" Binding="{Binding CurrentTarget.Name}" />
+                    <DataGridTextColumn Width="*" Binding="{Binding HighestScore}" />
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
         
         <Grid Grid.Column="0" Grid.Row="1" AllowDrop="True">
+            <i:Interaction.Behaviors>
+                <behaviors:AddDroppedFileSystemItemsToListBehavior ActiveItemType="Folders" TargetList="{Binding TargetDirectories}" />
+            </i:Interaction.Behaviors>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="Target" />
-            <DataGrid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding SourceFiles}" AutoGenerateColumns="False">
+            <DataGrid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding TargetDirectories}" AutoGenerateColumns="False" IsReadOnly="True" >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="Auto" />
-                    <DataGridTextColumn Width="*" />
+                    <DataGridTextColumn Width="*"  Binding="{Binding Name}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

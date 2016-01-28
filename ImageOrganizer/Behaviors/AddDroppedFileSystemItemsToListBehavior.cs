@@ -49,7 +49,7 @@ namespace ImageOrganizer.Behaviors
                 string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
                 if(ActiveItemType == ItemType.Images || ActiveItemType == ItemType.Both)
                 { 
-                    foreach(var file in files.Select(f => new File(f)).Where(f => ImageOrganizer.Models.Image.IsImage(f)))
+                    foreach(var file in files.Select(f => new File(f)).Where(f => ImageOrganizer.Models.Image.IsImage(f)).Select(f => new ImageOrganizer.Models.Image(f)))
                     {
                         TargetList.Add(new ImageViewModel(file));
                     }

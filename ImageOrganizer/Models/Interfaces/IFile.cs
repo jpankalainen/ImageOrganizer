@@ -4,5 +4,6 @@
     {
         string FullPath { get; }
         string Extension { get; }
+        string Name { get; }
     }
 }

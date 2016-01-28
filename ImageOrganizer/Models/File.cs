@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using ImageOrganizer.Models.Interfaces;
+using System.IO;
 
 namespace ImageOrganizer.Models
 {
@@ -6,6 +7,7 @@ namespace ImageOrganizer.Models
     {
         private FileInfo _fileInfo;
 
+        public string Name => _fileInfo.Name;
         public string FullPath => _fileInfo.FullName;
         public string Extension => _fileInfo.Extension;
 

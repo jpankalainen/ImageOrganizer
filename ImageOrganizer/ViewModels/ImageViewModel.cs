@@ -29,28 +29,5 @@ namespace ImageOrganizer.ViewModels
         {
             FeatureVector = bow.GetFeatureVector(_image.BitmapImage);
         }
-
-        public void Classify(ObservableCollection<TargetFolderViewModel> targetDirectories)
-        {
-            //foreach(var dir in targetDirectories)
-            //{
-            //    var similarity = 0.0f;
-            //    var imgCount = 0;
-            //    dir.Images.Do(async i =>
-            //    {
-            //        similarity += await i.Compare(_image);
-            //        ++imgCount;
-            //    });
-
-            //    var avg = similarity / imgCount;
-            //    if(avg > HighestScore)
-            //    {
-            //        HighestScore = similarity;
-            //        CurrentTarget = dir;
-            //        OnPropertyChanged(() => HighestScore);
-            //        OnPropertyChanged(() => CurrentTarget);
-            //    }
-            //}
-        }
     }
 }
